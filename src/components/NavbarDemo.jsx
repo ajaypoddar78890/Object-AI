@@ -1,52 +1,35 @@
-"use client";
-import React, { useState } from "react";
-import {
-  HoveredLink,
-  Menu,
-  MenuItem,
-  ProductItem,
-} from "../components/ui/navbar-menu";
-import { cn } from "../utils/cn";
+import React from "react";
+// import Link from "next/link";
+import { FiSearch } from "react-icons/fi";
+import { FaUserCircle } from "react-icons/fa";
 
-export function NavbarDemo() {
+const NavbarDemo = () => {
   return (
-    <div className="relative w-full flex items-center justify-center">
-      <Navbar className="" />
-    </div>
-  );
-}
+    <header className="bg-black mt-2 container mx-auto  px-5 py-2  md:px-10">
+      <nav className="flex items-center justify-between md:px-4 md:py-2">
+        <h2>Object-AI</h2>
 
-function Navbar({ className }) {
-  const [active, setActive] = useState(null);
-  return (
-    <div
-      className={cn("fixed top-10 inset-x-0 max-w-7xl mx-auto z-50", className)}
-    >
-      <Menu setActive={setActive}>
-        <MenuItem setActive={setActive} active={active} item="Services">
-          <div className="flex flex-col space-y-4 text-sm">
-            <HoveredLink href="/web-dev">Web Development</HoveredLink>
-            <HoveredLink href="/interface-design">Interface Design</HoveredLink>
-            <HoveredLink href="/seo">Search Engine Optimization</HoveredLink>
-            <HoveredLink href="/branding">Branding</HoveredLink>
-          </div>
-        </MenuItem>
-        <MenuItem
-          setActive={setActive}
-          active={active}
-          item="Products"
-        ></MenuItem>
-        <MenuItem setActive={setActive} active={active} item="Pricing">
-          <div className="flex flex-col space-y-4 text-sm">
-            <HoveredLink href="/hobby">Hobby</HoveredLink>
-            <HoveredLink href="/individual">Individual</HoveredLink>
-            <HoveredLink href="/team">Team</HoveredLink>
-            <HoveredLink href="/enterprise">Enterprise</HoveredLink>
-          </div>
-        </MenuItem>
-      </Menu>
-    </div>
+        <div className="hidden md:flex md:gap-10 text-gray-400">
+          {["iphone", "Macbook", "Tablet"].map((navItem) => (
+            <div className="hover:text-white md:text-xl" key={navItem}>
+              {navItem}
+            </div>
+          ))}
+        </div>
+
+        <div className="flex gap-5 md:gap-6">
+          <FiSearch
+            className="w-6 h-6 md:w-15 md:h-15 text-neutral-500"
+            alt="search icon"
+          />
+          <FaUserCircle
+            className="w-6 h-6 md:w-15 md:h-15 text-neutral-500"
+            alt="account icon"
+          />
+        </div>
+      </nav>
+    </header>
   );
-}
+};
 
 export default NavbarDemo;
